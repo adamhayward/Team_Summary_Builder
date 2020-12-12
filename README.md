@@ -1,10 +1,21 @@
 # Team Summary Builder
+### Table of Contents 
+- [`Description`](#Description "check out a brief description & demo of the app") 
+- [`Installation Instructions`](#InstallationInstructions "how to install the app") 
+- [`Usage`](#Usage "intended use") 
+- [`Contribution Guidelines`](#ContributionGuidelines "requirements to contribute to project") 
+- [`Testing Proceedures`](#TestingProceedures "instructions on how to test the app") 
+- [`Licenses Required`](#LicensesRequired "license requirements") 
+- [`Questions`](#Questions "ask the developer") 
 
 ## Description
 This is a simple **`command line`**` application designed to request information from the user to set up an employee roster for a softwear engineering team. The application then generates a professinal website to host the employee roster with both basic and contact information for each employee. 
 
 ## Installation Instructions
-The following outlines how too install the app:1. Insall **`npm`** by running `npm install -y` from the **`command line`**.2. Install **`inquirer`** by running `npm i inquirer` from the **`command line`**. 3. Run `node index.js` from the **`command line`**.
+The following outlines how too install the app:
+1. Insall **`npm`** by running `npm install -y` from the **`command line`**.
+2. Install **`inquirer`** by running `npm i inquirer` from the **`command line`**. 
+3. Run `node index.js` from the **`command line`**.
 
 ## Usage
 The application's intended use is for a user to be able to build a list of team members for a softwear engineering team and allow the user to input inforomation about the employee alongw with their contact information to generate a professional team roster dispalyed in a proffessional website.
@@ -13,7 +24,8 @@ The application's intended use is for a user to be able to build a list of team 
 At this time the creater asks that the repo be cloned and developed futhNone a
 
 ## Testing Proceedures
-Begin by ensuring that the **JEST** package is installed by running `npm i jest` from the command line.--------(more to come)---------
+Begin by ensuring that the **jest** package is installed by running `npm i jest` from the command line.
+-------(more to come)---------
 
 ## Licenses Required
 This is an open source app
