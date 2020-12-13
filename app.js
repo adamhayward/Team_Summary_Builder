@@ -1,6 +1,6 @@
-// const Manager = require("./lib/Manager");
-// const Engineer = require("./lib/Engineer");
-// const Intern = require("./lib/Intern");
+const Manager = require("./lib/Manager");
+const Engineer = require("./lib/Engineer");
+const Intern = require("./lib/Intern");
 const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
@@ -10,6 +10,8 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 const Employee = require("./lib/Employee");
+
+const allEmployees = []
 
 const promptUser = () =>
     inquirer.prompt([
@@ -29,6 +31,11 @@ const promptUser = () =>
             type: 'input',
             name: 'id',
             message: `Please enter the employee's employee id`
+        },
+        {
+            type: 'input',
+            name: 'email',
+            message: `Please enter the employee's email address`
         },
         {
             type: 'input',
@@ -57,7 +64,32 @@ const promptUser = () =>
             message: 'Will you be adding additional employees at this time?',
         }
     ])
-   
+    .then((answers) => {
+        // console.log(JSON.stringify(answers, null, ' '));
+        switch(answers.role) {
+            case 'Manager':
+                const manager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber);
+                allEmployees.push(manager);
+                console.log(allEmployees);
+                break;
+            case 'Engineer':
+                const engineer = new Engineer(answers.name, answers.id, answers.email, answers.gitHub);
+                allEmployees.push(engineer);
+                console.log(allEmployees);
+                break;
+            case 'Intern':
+                const intern = new Intern(answers.name, answers.id, answers.email, answers.univercity);
+                allEmployees.push(intern);
+                console.log(allEmployees);
+                break;
+        }
+        if(answers.additionalEmployee){
+            promptUser();
+        }
+
+    })
+
+
 promptUser();
 // render();
    
