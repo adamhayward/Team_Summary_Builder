@@ -53,7 +53,7 @@ const promptUser = () =>
         },
         {
             type: 'input',
-            name: "univercity",
+            name: "school",
             message: "Please enter the Intern's Univercity",
             //only prompts 'Intern' is selected as the employee's role.
             when: (answer) => answer.role === "Intern"
@@ -78,7 +78,7 @@ const promptUser = () =>
                 console.log(allEmployees);
                 break;
             case 'Intern':
-                const intern = new Intern(answers.name, answers.id, answers.email, answers.univercity);
+                const intern = new Intern(answers.name, answers.id, answers.email, answers.school);
                 allEmployees.push(intern);
                 console.log(allEmployees);
                 break;
