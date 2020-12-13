@@ -11,7 +11,7 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 const render = require("./lib/htmlRenderer");
 const Employee = require("./lib/Employee");
 
-const allEmployees = []
+let allEmployees = [];
 
 const promptUser = () =>
     inquirer.prompt([
@@ -64,35 +64,42 @@ const promptUser = () =>
             message: 'Will you be adding additional employees at this time?',
         }
     ])
-    .then((answers) => {
-        // console.log(JSON.stringify(answers, null, ' '));
-        switch(answers.role) {
-            case 'Manager':
-                const manager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber);
-                allEmployees.push(manager);
-                console.log(allEmployees);
-                break;
-            case 'Engineer':
-                const engineer = new Engineer(answers.name, answers.id, answers.email, answers.gitHub);
-                allEmployees.push(engineer);
-                console.log(allEmployees);
-                break;
-            case 'Intern':
-                const intern = new Intern(answers.name, answers.id, answers.email, answers.school);
-                allEmployees.push(intern);
-                console.log(allEmployees);
-                break;
-        }
-        if(answers.additionalEmployee){
-            promptUser();
-        }
-
-    })
-
+        .then((answers) => {
+            // console.log(JSON.stringify(answers, null, ' '));
+            switch (answers.role) {
+                case 'Manager':
+                    const manager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber);
+                    allEmployees.push(manager);
+                    console.log(allEmployees);
+                    break;
+                case 'Engineer':
+                    const engineer = new Engineer(answers.name, answers.id, answers.email, answers.gitHub);
+                    allEmployees.push(engineer);
+                    console.log(allEmployees);
+                    break;
+                case 'Intern':
+                    const intern = new Intern(answers.name, answers.id, answers.email, answers.school);
+                    allEmployees.push(intern);
+                    console.log(allEmployees);
+                    break;
+            }
+            if (answers.additionalEmployee) {
+                promptUser();
+            } else {
+                const renderHTML = render(allEmployees);
+                fs.writeFile(outputPath, renderHTML, (err) => {
+                    if (err) {
+                        console.log(err);
+                    }else{
+                    console.log(`success! Your new html page is ready to veiw.\ncheck inside the 'otuput' folder`);
+                    }
+                })
+            }
+        })
 
 promptUser();
-// render();
-   
+
+
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
 
