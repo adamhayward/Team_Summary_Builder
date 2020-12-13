@@ -11,7 +11,7 @@
 ## Description
 This is a simple **`command line`**` application designed to request information from the user to set up an employee roster for a softwear engineering team. The application then generates a professinal website to host the employee roster with both basic and contact information for each employee. 
 
-See the app in action here with this breif demonstration:[`demo video](https://drive.google.com/file/d/1GNH6dN0Dyqv3zgU2yR_agNdjP2m4jWNK/view?usp=sharing) 
+See the app in action here with this breif [*demo video*](https://drive.google.com/file/d/1GNH6dN0Dyqv3zgU2yR_agNdjP2m4jWNK/view?usp=sharing).
 
 ## Installation Instructions
 Create a clone of the repository and run `node app.js` from the command line.
