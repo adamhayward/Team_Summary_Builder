@@ -1,6 +1,6 @@
-const Manager = require("./lib/Manager");
-const Engineer = require("./lib/Engineer");
-const Intern = require("./lib/Intern");
+// const Manager = require("./lib/Manager");
+// const Engineer = require("./lib/Engineer");
+// const Intern = require("./lib/Intern");
 const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
@@ -9,8 +9,58 @@ const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
+const Employee = require("./lib/Employee");
 
-
+const promptUser = () =>
+    inquirer.prompt([
+        {
+            type: 'input',
+            name: 'name',
+            message: 'Please enter the name of the employee'
+        },
+        {
+            type: 'list',
+            name: 'role',
+            message: `Please select the employee's rols`,
+            default: 'Intern',
+            choices: ['Manager', 'Engineer', 'Intern']
+        },
+        {
+            type: 'input',
+            name: 'id',
+            message: `Please enter the employee's employee id`
+        },
+        {
+            type: 'input',
+            name: "officeNumber",
+            message: "Please enter the Manager's office number",
+            //only prompts 'Manager' is selected as the employee's role.
+            when: (answer) => answer.role === "Manager"
+        },
+        {
+            type: 'input',
+            name: "gitHub",
+            message: "Please enter the Engineer's GitHub user name",
+            //only prompts 'Engineer' is selected as the employee's role.
+            when: (answer) => answer.role === "Engineer"
+        },
+        {
+            type: 'input',
+            name: "univercity",
+            message: "Please enter the Intern's Univercity",
+            //only prompts 'Intern' is selected as the employee's role.
+            when: (answer) => answer.role === "Intern"
+        },
+        {
+            type: 'confirm',
+            name: 'additionalEmployee',
+            message: 'Will you be adding additional employees at this time?',
+        }
+    ])
+   
+promptUser();
+// render();
+   
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
 
